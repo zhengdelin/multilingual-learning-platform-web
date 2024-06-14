@@ -1,0 +1,40 @@
+{
+  "name": "multilingual-learning-platform-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
+    "axios": "^1.7.2",
+    "pinia": "^2.1.7",
+    "use-axios-async-data": "^0.0.6",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-routes-generator": "^1.1.9",
+    "vue": "^3.4.21",
+    "vue-i18n": "^9.13.1",
+    "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "@typescript-eslint/eslint-plugin": "^7.13.0",
+    "@typescript-eslint/parser": "^7.13.0",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^9.4.0",
+    "eslint-plugin-vue": "^9.26.0",
+    "naive-ui": "^2.38.2",
+    "postcss": "^8.4.38",
+    "sass": "^1.77.5",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.2.2",
+    "unplugin-auto-import": "^0.17.6",
+    "unplugin-vue-components": "^0.27.0",
+    "vite": "^5.2.0",
+    "vue-tsc": "^2.0.6"
+  }
+}
