@@ -11,8 +11,9 @@
   "dependencies": {
     "@vitejs/plugin-vue-jsx": "^4.0.0",
     "axios": "^1.7.2",
+    "moment": "^2.30.1",
     "pinia": "^2.1.7",
-    "use-axios-async-data": "^0.0.6",
+    "use-axios-async-data": "^0.0.7",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-routes-generator": "^1.1.9",
     "vue": "^3.4.21",

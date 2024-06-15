@@ -7,8 +7,26 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
-    HelloWorld1: typeof import('./components/HelloWorld1.vue')['default']
+    AsideBase: typeof import('./components/AsideBase.vue')['default']
+    CAsyncRouterView: typeof import('./ui/c-async-router-view/CAsyncRouterView.vue')['default']
+    ContentBase: typeof import('./components/ContentBase.vue')['default']
+    copy: typeof import('./components/HeaderBase copy.vue')['default']
+    FooterBase: typeof import('./components/FooterBase.vue')['default']
+    FormProvider: typeof import('./components/FormProvider.vue')['default']
+    HeaderBase: typeof import('./components/HeaderBase.vue')['default']
+    HeaderBase1: typeof import('./components/HeaderBase1.vue')['default']
+    HeaderSearchForm: typeof import('./components/HeaderSearchForm.vue')['default']
+    NButton: typeof import('naive-ui')['NButton']
+    NDropdown: typeof import('naive-ui')['NDropdown']
+    NH2: typeof import('naive-ui')['NH2']
+    NIcon: typeof import('naive-ui')['NIcon']
+    NInput: typeof import('naive-ui')['NInput']
+    NInputGroup: typeof import('naive-ui')['NInputGroup']
+    NLayout: typeof import('naive-ui')['NLayout']
+    NLayoutContent: typeof import('naive-ui')['NLayoutContent']
+    NLayoutFooter: typeof import('naive-ui')['NLayoutFooter']
+    NLayoutHeader: typeof import('naive-ui')['NLayoutHeader']
+    NLayoutSider: typeof import('naive-ui')['NLayoutSider']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

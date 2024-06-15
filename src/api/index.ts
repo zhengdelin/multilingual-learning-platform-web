@@ -1,8 +1,9 @@
-import { createUseAxiosAsyncData } from "use-axios-async-data";
-import global from "@/api/modules/global";
 import { useAxios } from "@/api/config";
 import { $message } from "@/composable/useMessage";
-const $axios = useAxios("/api/zh-tw", {
+import { createUseAxiosAsyncData } from "use-axios-async-data";
+import dictionary from "./modules/dictionary/index";
+import global from "./modules/global";
+const $axios = useAxios("/api", {
   onRequestSuccess: (config) => {
     console.log("onRequestSuccess :>> ", config);
   },
@@ -33,10 +34,11 @@ const $axios = useAxios("/api/zh-tw", {
     }
   },
 });
-export const $query = createUseAxiosAsyncData<ApiResponse>($axios);
+export const $query = createUseAxiosAsyncData<{ message: string; statusCode: number; error: string }>($axios);
 
 export type WatchableParams<T> = ComputedRef<T>;
 export const $api = {
   isSuccess: <T extends ApiResponse>(data: T | null): data is T => !!data?.success,
   global,
+  dictionary,
 };

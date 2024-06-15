@@ -6,7 +6,10 @@ export {};
 declare global {
   interface Array<T> {
     groupBy<K extends KeyHandler<T> | keyof T>(keyHandlerOrKey: K): HandledArray<T, K, T[]>;
-    mapBy<K extends KeyHandler<T> | keyof T, U = T>(keyHandler: K, resolveHandler?: ResolveHandler<T, U>): HandledArray<T, K, U>;
+    mapBy<K extends KeyHandler<T> | keyof T, U = T>(
+      keyHandler: K,
+      resolveHandler?: ResolveHandler<T, U>,
+    ): HandledArray<T, K, U>;
   }
 }
 

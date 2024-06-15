@@ -14,12 +14,15 @@ importers:
       axios:
         specifier: ^1.7.2
         version: 1.7.2
+      moment:
+        specifier: ^2.30.1
+        version: 2.30.1
       pinia:
         specifier: ^2.1.7
         version: 2.1.7(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
       use-axios-async-data:
-        specifier: ^0.0.6
-        version: 0.0.6(typescript@5.4.5)
+        specifier: ^0.0.7
+        version: 0.0.7(typescript@5.4.5)
       vite-plugin-compression:
         specifier: ^0.5.1
         version: 0.5.1(vite@5.3.0(@types/node@20.14.2)(sass@1.77.5))
@@ -1316,6 +1319,9 @@ packages:
   mlly@1.7.1:
     resolution: {integrity: sha512-rrVRZRELyQzrIUAVMHxP97kv+G786pHmOKzuFII8zDYahFBS7qnHh2AlYSl1GAHhaMPCz6/oHjVMcfFYgFYHgA==}
 
+  moment@2.30.1:
+    resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
+
   ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
 
@@ -1707,8 +1713,8 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
-  use-axios-async-data@0.0.6:
-    resolution: {integrity: sha512-/flSiFDcgIwG0zdI7BRguJVrqJVVL/VopeyH/l2oasG73d+P/INC9SMopR5pdeKYdwBkXicW6+RNUdeeKqFgYw==}
+  use-axios-async-data@0.0.7:
+    resolution: {integrity: sha512-tMM2TjP2D6IJfzKsATHlAHyI7DN1qBQcERWdcQ5r709lGFoMs4eIyDyxeCkGnQuJHu2NNHlYVffgEV/ZnnbHlA==}
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -3102,6 +3108,8 @@ snapshots:
       pkg-types: 1.1.1
       ufo: 1.5.3
 
+  moment@2.30.1: {}
+
   ms@2.1.2: {}
 
   muggle-string@0.4.1: {}
@@ -3520,7 +3528,7 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  use-axios-async-data@0.0.6(typescript@5.4.5):
+  use-axios-async-data@0.0.7(typescript@5.4.5):
     dependencies:
       axios: 1.7.2
       vue: 3.4.27(typescript@5.4.5)

@@ -1,5 +1,5 @@
 <template>
-  <div>首頁</div>
+  <c-async-router-view></c-async-router-view>
 </template>
 <script setup lang="ts">
 //

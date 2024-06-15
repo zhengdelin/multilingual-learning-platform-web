@@ -1,5 +1,6 @@
 // https://pinia.vuejs.org/ssr/nuxt.html
 // npm i pinia
+import { Language } from "@/types/modules";
 import { createPinia, defineStore } from "pinia";
 import { App } from "vue";
 export function installPinia(app: App) {
@@ -7,8 +8,13 @@ export function installPinia(app: App) {
 }
 
 export const useStore = defineStore("index", () => {
-  const count = ref(1);
+  const curLanguage = ref(Language.CHINESE);
+
+  function setCurLanguage(lang: Language) {
+    curLanguage.value = lang;
+  }
   return {
-    count,
+    curLanguage,
+    setCurLanguage,
   };
 });

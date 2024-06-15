@@ -1,5 +1,5 @@
 <template>
-  <div>首頁</div>
+  <div>{{ $route.params.category }}{{ $route.params.lang }}</div>
 </template>
 <script setup lang="ts">
 //

@@ -1,7 +1,7 @@
 <template>
-  <div>首頁</div>
+  <div>{{ $route.query.keyword }}</div>
 </template>
 <script setup lang="ts">
-//
+// import { computed } from 'vue'
 </script>
 <style scoped lang="scss"></style>

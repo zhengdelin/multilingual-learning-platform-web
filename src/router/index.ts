@@ -1,6 +1,6 @@
 import { App } from "vue";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import { generateRoutes } from "vite-plugin-routes-generator";
+import { generateRoutes } from "./lib";
 
 export const routes = generateRoutes({
   components: import.meta.glob(`../views/**\/*.vue`),
@@ -10,14 +10,21 @@ export const routes = generateRoutes({
   }),
 });
 
+console.log("routes :>> ", routes);
+
 const router = createRouter({
   history: createWebHistory(),
   routes: routes as RouteRecordRaw[],
 });
 
 router.beforeEach((to) => {
-  const title = to.meta.title;
-  document.title = title || "vue3-app";
+  if (to.meta.title) {
+    const _title = typeof to.meta.title === "string" ? () => to.meta.title : to.meta.title;
+    const title = _title(to);
+    document.title = `${title ? title + " - " : ""}多語言學習平台`;
+  } else {
+    document.title = `多語言學習平台`;
+  }
 });
 
 export function installRouter(app: App) {

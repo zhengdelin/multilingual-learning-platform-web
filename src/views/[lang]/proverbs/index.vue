@@ -1,5 +1,5 @@
 <template>
-  <div>首頁</div>
+  <div>諺語</div>
 </template>
 <script setup lang="ts">
 //
