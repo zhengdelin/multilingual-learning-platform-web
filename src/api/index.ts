@@ -36,7 +36,7 @@ const $axios = useAxios("/api", {
 });
 export const $query = createUseAxiosAsyncData<{ message: string; statusCode: number; error: string }>($axios);
 
-export type WatchableParams<T> = ComputedRef<T>;
+export type WatchableParams<T> = Ref<T>;
 export const $api = {
   isSuccess: <T extends ApiResponse>(data: T | null): data is T => !!data?.success,
   global,

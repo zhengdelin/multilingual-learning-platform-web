@@ -43,6 +43,10 @@ export default {
       },
       fontFamily: {
         poppins: '"Poppins"',
+        regular: `Biaodian Pro Serif CNS, Numeral LF Serif, MOEDICT, Fira Sans OT, Georgia, Times New Roman, Zhuyin Kaiti,
+    TW-Kai-98_1, 教育部標準楷書, kai-pc, CMEXc1, Biaukai, MOEDICT-IOS-KAI, DFKaiShu-SB-Estd-BF, 全字庫正楷體, Kaiti TC,
+    楷體-繁, 文鼎ＰＬ新中楷, cwtext 楷書, cursive, serif, HanaMinA, HanaMinB, HAN NOM A, HAN NOM B, Han Kaiti CNS,
+    cursive, serif`,
       },
       spacing: {
         15: "3.75rem",

@@ -1,6 +1,6 @@
 import { App } from "vue";
-import directive from "./directive";
 import Loading from "./components/Loading.vue";
+import directive from "./directive";
 
 export function useLoading(_loadingWhenPageStart = false) {
   const loading = ref(false);
@@ -45,7 +45,7 @@ export function setupLoading(app: App) {
   app.component("Loading", Loading);
 }
 
-declare module "@vue/runtime-core" {
+declare module "vue" {
   export interface GlobalComponents {
     Loading: typeof Loading;
   }

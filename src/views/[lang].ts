@@ -4,4 +4,6 @@ export default defineRouteConfig({
   // validate: (to) => {
   //   return true;
   // },
+  // 只允許 :lang 為 chinese/english/minnan/hakka/bilateral
+  validation: "(chinese|english|minnan|hakka|bilateral)",
 });

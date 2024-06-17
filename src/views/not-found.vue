@@ -1,7 +1,7 @@
 <template>
-  <div>categories index</div>
+  <div>404</div>
 </template>
 <script setup lang="ts">
-const router = useRouter();
+//
 </script>
 <style scoped lang="scss"></style>

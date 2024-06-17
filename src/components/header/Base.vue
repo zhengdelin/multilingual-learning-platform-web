@@ -7,8 +7,11 @@
   </n-layout-header>
 </template>
 <script setup lang="ts">
-import { $api } from "@/api";
+import { useRouteParamsLang } from "@/composable/useLanguage";
 import { useStore } from "@/store";
+import { useBilateralStore } from "@/store/bilateral";
+import { useChineseStore } from "@/store/chinese";
+import { useMinnanStore } from "@/store/minnan";
 import { Language } from "@/types/modules";
 import { flatTree } from "@/utils/object";
 type Option = {
@@ -34,9 +37,13 @@ enum MenuKey {
 }
 
 const router = useRouter();
-const chineseData = $api.dictionary.getCategories(Language.CHINESE);
-const minnanData = $api.dictionary.getCategories(Language.MINNAN);
-const bilateralData = $api.dictionary.getCategories(Language.BILATERAL);
+const { lang } = useRouteParamsLang();
+const chineseStore = useChineseStore();
+const minnanStore = useMinnanStore();
+const bilateralStore = useBilateralStore();
+chineseStore.getCategories();
+minnanStore.getCategories();
+bilateralStore.getCategories();
 
 const toCategoryPage = (lang: string, category: string) => router.push(`/${lang}/categories/${category}`);
 const toProverbsPage = (lang: string) => router.push(`/${lang}/proverbs`);
@@ -51,7 +58,7 @@ const options = computed<Option[]>(() => [
   {
     label: "分類",
     key: "chinese-category",
-    children: chineseData.data.value || [],
+    children: chineseStore.categories,
     source: MenuKey.CHINESE,
     onClick: (key: string) => toCategoryPage(MenuKey.CHINESE, key),
   },
@@ -74,7 +81,7 @@ const options = computed<Option[]>(() => [
   {
     label: "分類",
     key: "minnan-category",
-    children: minnanData.data.value || [],
+    children: minnanStore.categories,
     source: MenuKey.MINNAN,
     onClick: (key: string) => toCategoryPage(MenuKey.MINNAN, key),
   },
@@ -111,7 +118,7 @@ const options = computed<Option[]>(() => [
   {
     label: "分類",
     key: "bilateral-category",
-    children: bilateralData.data.value || [],
+    children: bilateralStore.categories,
     source: MenuKey.BILATERAL,
     onClick: (key: string) => toCategoryPage(MenuKey.BILATERAL, key),
   },
@@ -130,8 +137,12 @@ const flattedOptionsMap = computed(() =>
 );
 
 const store = useStore();
-const curActive = computed(() => store.curLanguage);
-const curActiveLabel = computed(() => flattedOptionsMap.value[curActive.value].label);
+const curActive = computed(() => {
+  return lang.value;
+});
+const curActiveLabel = computed(() => {
+  return flattedOptionsMap.value[curActive.value]?.label;
+});
 
 function findRootParent(option: Option) {
   if (!option.parent) {
@@ -141,7 +152,7 @@ function findRootParent(option: Option) {
 }
 
 function handleSelect(key: string, option: any) {
-  console.log("option :>> ", option);
+  // console.log("option :>> ", option);
   let onClick: Option["onClick"];
   if (option.root) {
     store.setCurLanguage(key as any);

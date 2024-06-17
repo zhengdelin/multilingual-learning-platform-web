@@ -10,8 +10,6 @@ export const routes = generateRoutes({
   }),
 });
 
-console.log("routes :>> ", routes);
-
 const router = createRouter({
   history: createWebHistory(),
   routes: routes as RouteRecordRaw[],

@@ -5,5 +5,5 @@ export default defineRouteConfig({
       return (to.query.keyword as string) || "";
     },
   },
-  name: "search",
+  // name: "search",
 });

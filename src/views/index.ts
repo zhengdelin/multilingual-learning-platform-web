@@ -7,4 +7,7 @@ export default defineRouteConfig({
   // validate: (to) => {
   //   return true;
   // },
+  redirect(to) {
+    return "/chinese";
+  },
 });

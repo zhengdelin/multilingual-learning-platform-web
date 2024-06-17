@@ -1,4 +1,4 @@
-import { useRouteParamsLanguageMap } from "@/composable/useRouteParamsLanguageMap";
+import { useRouteParamsLanguageMap } from "@/composable/useLanguage";
 import { defineRouteConfig } from "vite-plugin-routes-generator";
 export default defineRouteConfig({
   meta: {

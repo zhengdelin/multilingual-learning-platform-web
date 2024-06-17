@@ -20,6 +20,8 @@ declare global {
    * 挑選出所有為 Optional Key 的屬性
    */
   type Optionals<T> = Pick<T, OptionalKeys<T>>;
+
+  type MaybeArray<T> = T | T[];
 }
 
 export {};
