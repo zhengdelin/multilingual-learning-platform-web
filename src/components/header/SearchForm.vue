@@ -5,6 +5,7 @@
         <template #empty> 查無資料 </template>
       </n-select> -->
       <n-input ref="searchInputRef" placeholder="/" v-model:value="searchText"></n-input>
+      <InputRecord />
       <n-button type="primary" attr-type="submit">搜尋</n-button>
     </n-input-group>
   </FormProvider>
