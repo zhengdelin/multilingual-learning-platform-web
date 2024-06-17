@@ -108,4 +108,5 @@ export default {
   },
 
   getXref: (lang: string) => $query.get(`/${lang}/xref`),
+  getEntries: (lang: string) => $query.get(`/${lang}/entries`),
 } as const;

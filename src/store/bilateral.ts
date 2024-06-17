@@ -5,6 +5,7 @@ import { $api } from "@/api";
 import { Language } from "@/types/modules";
 import { CategoryView } from "@/types/modules/dictionary";
 import { defineStore } from "pinia";
+import { useEntriesModule } from "./modules/entries";
 import { useXrefModule } from "./modules/xref";
 
 export const useBilateralStore = defineStore("bilateral", () => {
@@ -20,5 +21,6 @@ export const useBilateralStore = defineStore("bilateral", () => {
     categories,
     getCategories,
     ...useXrefModule(Language.BILATERAL),
+    ...useEntriesModule(Language.BILATERAL),
   };
 });

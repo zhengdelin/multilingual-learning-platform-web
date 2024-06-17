@@ -1,12 +1,13 @@
 <template>
-  <div
-    v-for="translation in translations"
-    :key="translation.label"
-    class="flex items-center gap-2 px-2 py-4 border border-b-0 last:border-b"
-  >
-    <DictLabel :text="translation.label"></DictLabel>
-    <component :is="translation.render"></component>
-  </div>
+  <c-empty :data="translations" text="查無翻譯">
+    <div v-for="translation in translations" :key="translation.label" class="row">
+      <DictLabel :text="translation.label"></DictLabel>
+      <component :is="translation.render"></component>
+    </div>
+    <template #empty>
+      <div class="row">查無翻譯</div>
+    </template>
+  </c-empty>
 </template>
 <script setup lang="tsx">
 import { useXrefTranslate } from "@/composable/useXrefTranslate";
@@ -16,7 +17,7 @@ import SearchableText from "./SearchableText.vue";
 import TextParser from "./TextParser.vue";
 const props = defineProps<{
   text: string;
-  translation: PhraseOrWordDefinitionView["translation"];
+  translation?: PhraseOrWordDefinitionView["translation"];
 }>();
 
 const langToChineseMap = {
@@ -89,4 +90,8 @@ const translations = computed(() => {
   return items;
 });
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.row {
+  @apply flex items-center gap-2 px-2 py-4 border border-b-0 last:border-b;
+}
+</style>

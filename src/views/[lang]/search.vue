@@ -16,6 +16,7 @@
                       })
                     "
                     :zhuyin="polyDef.b"
+                    :show-text-to-speech="![Language.MINNAN, Language.HAKKA].includes(lang)"
                   ></DictRubyText>
                 </div>
               </template>
@@ -32,12 +33,17 @@
           </Suspense>
         </div>
       </template>
+      <template #empty>
+        <HeaderPage :title="keyword" />
+        <p class="text-center">查無相關資料</p>
+      </template>
     </c-empty>
   </div>
 </template>
 <script setup lang="ts">
 import { $api } from "@/api";
 import { useLanguageCondition, useRouteParamsLang } from "@/composable/useLanguage";
+import { Language } from "@/types/modules";
 
 // import { computed } from 'vue'
 

@@ -30,5 +30,5 @@ export function useStoreByLanguage(lang: Language) {
     [Language.HAKKA]: () => useHakkaStore(),
     [Language.BILATERAL]: () => useBilateralStore(),
     [Language.ENGLISH]: () => null,
-  }[lang]();
+  }[lang]?.();
 }

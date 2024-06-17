@@ -1,11 +1,10 @@
 <template>
   <FormProvider @submit="handleSearch">
     <n-input-group>
-      <n-input ref="searchInputRef" placeholder="/" v-model:value="searchText">
-        <template #prefix>
-          <!-- <n-icon :component="FlashOutline" /> -->
-        </template>
-      </n-input>
+      <!-- <n-select ref="searchInputRef" filterable placeholder="/" :options="options" @update:value="onSelectChange">
+        <template #empty> 查無資料 </template>
+      </n-select> -->
+      <n-input ref="searchInputRef" placeholder="/" v-model:value="searchText"></n-input>
       <n-button type="primary" attr-type="submit">搜尋</n-button>
     </n-input-group>
   </FormProvider>
@@ -22,7 +21,22 @@ function handleSearch() {
   }
 }
 
-const searchInputRef = ref<HTMLInputElement | null>(null);
+// function onSelectChange(text: string) {
+//   searchText.value = text;
+//   handleSearch();
+// }
+
+// const store = computed(() => useStoreByLanguage(lang.value));
+// const entries = computed(() => store.value?.entries || []);
+// const getData = () => store.value?.getEntries();
+// getData();
+// const options = computed(() => entries.value.map((i) => ({ label: i, value: i })));
+
+// watch(lang, () => {
+//   getData();
+// });
+
+const searchInputRef = ref(null as any);
 onMounted(() => {
   window.addEventListener("keydown", (e) => {
     // key /

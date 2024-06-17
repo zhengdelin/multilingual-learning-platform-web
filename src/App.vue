@@ -13,7 +13,7 @@ onMounted(() => {
     <HeaderBase></HeaderBase>
     <!-- <n-layout class="flex-1" has-sider> -->
     <!-- <AsideBase></AsideBase> -->
-    <n-layout-content style="max-width: 1280px; width: 100%; margin: auto">
+    <n-layout-content style="max-width: 1280px; width: 100%; margin: auto; padding: 0 8px">
       <router-view></router-view>
     </n-layout-content>
     <!-- </n-layout> -->

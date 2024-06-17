@@ -1,6 +1,6 @@
 import { App } from "vue";
-import { DebounceConfig, DebounceThrottleFun } from "./types";
 import { debounceDirective, throttleDirective } from "./directives";
+import { DebounceConfig, DebounceThrottleFun } from "./types";
 
 /**
  * 防抖

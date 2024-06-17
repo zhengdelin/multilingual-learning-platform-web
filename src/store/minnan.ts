@@ -4,6 +4,7 @@ import { $api } from "@/api";
 import { Language } from "@/types/modules";
 import { CategoryView } from "@/types/modules/dictionary";
 import { defineStore } from "pinia";
+import { useEntriesModule } from "./modules/entries";
 import { useXrefModule } from "./modules/xref";
 
 export const useMinnanStore = defineStore("minnan", () => {
@@ -20,5 +21,6 @@ export const useMinnanStore = defineStore("minnan", () => {
     categories,
     getCategories,
     ...useXrefModule(Language.MINNAN),
+    ...useEntriesModule(Language.MINNAN),
   };
 });

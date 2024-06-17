@@ -3,6 +3,7 @@
 
 import { Language } from "@/types/modules";
 import { defineStore } from "pinia";
+import { useEntriesModule } from "./modules/entries";
 import { useXrefModule } from "./modules/xref";
 
 export const useHakkaStore = defineStore("hakka", () => {
@@ -20,5 +21,6 @@ export const useHakkaStore = defineStore("hakka", () => {
   // };
   return {
     ...useXrefModule(Language.HAKKA),
+    ...useEntriesModule(Language.HAKKA),
   };
 });

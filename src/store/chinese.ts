@@ -4,6 +4,7 @@ import { $api } from "@/api";
 import { Language } from "@/types/modules";
 import { CategoryView } from "@/types/modules/dictionary";
 import { defineStore } from "pinia";
+import { useEntriesModule } from "./modules/entries";
 import { useXrefModule } from "./modules/xref";
 
 export const useChineseStore = defineStore("chinese", () => {
@@ -22,5 +23,6 @@ export const useChineseStore = defineStore("chinese", () => {
     getCategories,
 
     ...useXrefModule(Language.CHINESE),
+    ...useEntriesModule(Language.CHINESE),
   };
 });

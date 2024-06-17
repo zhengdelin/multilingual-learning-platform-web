@@ -1,43 +1,46 @@
 <template>
-  <div class="words-container">
-    <div class="words">
-      <DictTextParser :text="text">
-        <template #all="{ textList }">
-          <ruby v-for="groupData in getWordGroups(textList)" :key="text" :class="['word-group']">
-            <DictSearchableText :text="groupData.text">
-              <ruby v-for="item in groupData.groups" :key="text" :class="['word', { 'has-zhuyin': !!item.zhuyin }]">
-                {{ item.text
-                }}<rt
-                  class="zhuyin-container"
-                  v-if="item.zhuyin"
-                  :data-zhuyin-length="item.zhuyin.zhuyin.length"
-                  :data-tone="item.zhuyin.tone"
-                >
-                  <span class="zhuyin">{{ item.zhuyin.zhuyin }}</span>
-                  <span class="tone" :style="{ visibility: item.zhuyin.tone ? 'visible' : 'hidden' }">{{
-                    item.zhuyin.tone || "ˊ"
-                  }}</span>
-                </rt>
-              </ruby>
-            </DictSearchableText>
-          </ruby>
-        </template>
-      </DictTextParser>
-    </div>
-    <div
-      v-if="parsedPinyin.parsedPinyinList.length"
-      class="pinyin-container"
-      :style="{ '--grid-areas': parsedPinyin.gridArea }"
-    >
+  <div class="ruby-text-container">
+    <div class="words-container">
+      <div class="words">
+        <DictTextParser :text="text">
+          <template #all="{ textList }">
+            <ruby v-for="groupData in getWordGroups(textList)" :key="text" :class="['word-group']">
+              <DictSearchableText :text="groupData.text">
+                <ruby v-for="item in groupData.groups" :key="text" :class="['word', { 'has-zhuyin': !!item.zhuyin }]">
+                  {{ item.text
+                  }}<rt
+                    class="zhuyin-container"
+                    v-if="item.zhuyin"
+                    :data-zhuyin-length="item.zhuyin.zhuyin.length"
+                    :data-tone="item.zhuyin.tone"
+                  >
+                    <span class="zhuyin">{{ item.zhuyin.zhuyin }}</span>
+                    <span class="tone" :style="{ visibility: item.zhuyin.tone ? 'visible' : 'hidden' }">{{
+                      item.zhuyin.tone || "ˊ"
+                    }}</span>
+                  </rt>
+                </ruby>
+              </DictSearchableText>
+            </ruby>
+          </template>
+        </DictTextParser>
+      </div>
       <div
-        v-for="pinyin in parsedPinyin.parsedPinyinList"
-        :key="pinyin.text"
-        class="pinyin"
-        :style="{ '--grid-area': pinyin.gridArea }"
+        v-if="parsedPinyin.parsedPinyinList.length"
+        class="pinyin-container"
+        :style="{ '--grid-areas': parsedPinyin.gridArea }"
       >
-        {{ pinyin.text }}
+        <div
+          v-for="pinyin in parsedPinyin.parsedPinyinList"
+          :key="pinyin.text"
+          class="pinyin"
+          :style="{ '--grid-area': pinyin.gridArea }"
+        >
+          {{ pinyin.text }}
+        </div>
       </div>
     </div>
+    <DictTextToSpeechProvider v-if="showTextToSpeech" :text="text"></DictTextToSpeechProvider>
   </div>
 </template>
 <script setup lang="ts">
@@ -51,6 +54,7 @@ const props = withDefaults(
     text: string;
     zhuyin?: string;
     pinyin?: string;
+    showTextToSpeech?: boolean;
   }>(),
   {},
 );
@@ -96,7 +100,8 @@ function parsePinyinToGridArea(text?: string) {
     const pinyin = splittedPinyin.value[i];
     const count = pinyin.split("-").length;
     const gridArea = `a${i}`;
-    gridAreaList.push(...Array(count).fill(gridArea));
+    // gridAreaList.push(...Array(count).fill(gridArea));
+    gridAreaList.push(`${count}fr`);
     parsedPinyinList.push({
       text: pinyin,
       gridArea: `"${gridArea}"`,
@@ -104,8 +109,7 @@ function parsePinyinToGridArea(text?: string) {
   }
 
   return {
-    gridArea: `"${new Array(gridAreaList.length).fill("a").join(" ")}"
-    "${gridAreaList.join(" ")}"`,
+    gridArea: `${gridAreaList.join(" ")}`,
     parsedPinyinList,
   };
 }
@@ -113,6 +117,7 @@ const parsedPinyin = computed(() => parsePinyinToGridArea(props.pinyin));
 function getWordGroups(textList: any[]) {
   const groups = [] as { text: string; groups: { text: string; zhuyin: ParsedZhuyin }[] }[];
   let i = 0;
+  let zhuyinIdx = 0;
   for (const words of textList) {
     if (words.type === "punctuation") {
       groups.push({
@@ -130,7 +135,7 @@ function getWordGroups(textList: any[]) {
         text: words.text,
         groups: words.text.split("").map((text: string) => ({
           text: text,
-          zhuyin: parseZhuyin(splittedZhuyin.value[i++]),
+          zhuyin: parseZhuyin(splittedZhuyin.value[zhuyinIdx++]),
         })),
       });
     }
@@ -139,6 +144,11 @@ function getWordGroups(textList: any[]) {
 }
 </script>
 <style scoped lang="scss">
+.ruby-text-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .words-container {
   display: flex;
   flex-direction: column;
@@ -237,11 +247,11 @@ function getWordGroups(textList: any[]) {
 
   .pinyin-container {
     display: grid;
-    grid-template-areas: var(--grid-areas);
+    grid-template-columns: var(--grid-areas);
     font-size: 14px;
     color: #666;
     .pinyin {
-      grid-area: var(--grid-area);
+      // grid-area: var(--grid-area);
       display: flex;
       justify-content: center;
     }
