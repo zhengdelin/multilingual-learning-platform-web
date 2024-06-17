@@ -3,6 +3,7 @@ import { $message } from "@/composable/useMessage";
 import { createUseAxiosAsyncData } from "use-axios-async-data";
 import dictionary from "./modules/dictionary/index";
 import global from "./modules/global";
+import speechToText from "./modules/speech-to-text";
 import textToSpeech from "./modules/text-to-speech";
 const $axios = useAxios("/api", {
   onRequestSuccess: (config) => {
@@ -43,4 +44,5 @@ export const $api = {
   global,
   dictionary,
   textToSpeech,
+  speechToText,
 };

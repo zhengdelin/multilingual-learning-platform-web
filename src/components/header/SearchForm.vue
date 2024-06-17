@@ -5,7 +5,7 @@
         <template #empty> 查無資料 </template>
       </n-select> -->
       <n-input ref="searchInputRef" placeholder="/" v-model:value="searchText"></n-input>
-      <InputRecord />
+      <InputRecord @record-success="handleRecordSuccess" />
       <n-button type="primary" attr-type="submit">搜尋</n-button>
     </n-input-group>
   </FormProvider>
@@ -36,6 +36,10 @@ function handleSearch() {
 // watch(lang, () => {
 //   getData();
 // });
+
+function handleRecordSuccess(text: string) {
+  searchText.value = text;
+}
 
 const searchInputRef = ref(null as any);
 onMounted(() => {

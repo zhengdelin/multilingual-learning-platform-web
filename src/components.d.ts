@@ -24,7 +24,7 @@ declare module 'vue' {
     DictInputSpeech: typeof import('./components/dict/InputSpeech.vue')['default']
     DictLabel: typeof import('./components/dict/Label.vue')['default']
     DictPhraseDef: typeof import('./components/dict/PhraseDef.vue')['default']
-    DictPlayLabel: typeof import('./components/dict/PlayLabel.vue')['default']
+    DictPlayButton: typeof import('./components/dict/PlayButton.vue')['default']
     DictRubyText: typeof import('./components/dict/RubyText.vue')['default']
     DictSearchableText: typeof import('./components/dict/SearchableText.vue')['default']
     DictSearchableTextParser: typeof import('./components/dict/SearchableTextParser.vue')['default']
