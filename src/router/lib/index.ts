@@ -8,7 +8,7 @@ import {
   RouteConfig,
   RouteConfigModule,
   RouteConfigModules,
-} from "./types";
+} from "./types.ts";
 
 /**
  *

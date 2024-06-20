@@ -46,6 +46,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const port = +env.VITE_PORT;
 
+
   // 多頁應用用
   // const model = env.VITE_APP_MODEL || "";
   // const pages = (() => {
@@ -80,13 +81,13 @@ export default defineConfig(({ mode }) => {
     server: {
       port: port,
       host: "0.0.0.0",
-      proxy: {
-        "/api": {
-          target: env.VITE_URL,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ""),
-        },
-      },
+      // proxy: {
+      //   "/api": {
+      //     target: env.VITE_URL,
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/api/, ""),
+      //   },
+      // },
     },
     preview: {
       port,

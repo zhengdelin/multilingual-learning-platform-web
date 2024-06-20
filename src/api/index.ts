@@ -1,11 +1,12 @@
 import { useAxios } from "@/api/config";
 import { $message } from "@/composable/useMessage";
+import envVars from "@/constants/env-vars";
 import { createUseAxiosAsyncData } from "use-axios-async-data";
 import dictionary from "./modules/dictionary/index";
 import global from "./modules/global";
 import speechToText from "./modules/speech-to-text";
 import textToSpeech from "./modules/text-to-speech";
-const $axios = useAxios("/api", {
+const $axios = useAxios(envVars.env.VITE_URL, {
   onRequestSuccess: (config) => {
     console.log("onRequestSuccess :>> ", config);
   },

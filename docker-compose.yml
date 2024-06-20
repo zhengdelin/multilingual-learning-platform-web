@@ -1,0 +1,7 @@
+version: "3"
+services:
+  multilingual-learning-platform-web:
+    build: .
+    image: vue
+    ports:
+      - "80:80"

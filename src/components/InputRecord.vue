@@ -242,7 +242,7 @@ async function handleUpload() {
   if (!audioBlob.value) {
     return;
   }
-  const data = await executeUploadLoading(() => $api.speechToText.transform(lang.value, audioBlob.value));
+  const data = await executeUploadLoading(() => $api.speechToText.transform(lang.value, audioBlob.value as Blob));
   if (!data.data.value) {
     $message.error("識別失敗");
   } else {

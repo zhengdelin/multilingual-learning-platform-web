@@ -182,7 +182,7 @@ export function mergeObject(obj: any, sources: any, options: MergeOptions = {}):
 
 export function flatTree<T, K = T>(
   tree: T[],
-  transform = (item: T, rawParent?: T, transformedParent?: K): K => item as unknown as K,
+  transform = (item: T, _rawParent?: T, _transformedParent?: K): K => item as unknown as K,
   getChildren = (item: T) => (item as any).children as T[] | undefined,
 ): K[] {
   const _flat = (tree: T[], parent?: T, transformedParent?: K): K[] => {
@@ -192,15 +192,4 @@ export function flatTree<T, K = T>(
     }, [] as K[]);
   };
   return _flat(tree);
-  return [
-    ...new Set(
-      tree.reduce(
-        (acc, item) => {
-          const children = getChildren(item);
-          return acc.concat(children ? flatTree(children, getChildren, transform, item) : transform(item, parent));
-        },
-        [...tree] as unknown as K[],
-      ),
-    ),
-  ];
 }
